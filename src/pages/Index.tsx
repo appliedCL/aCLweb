@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, ArrowRight, X as CloseIcon } from 'lucide-react';
 import { TERMS_TC } from '../data/terms';
 
-
 const scrollStyles = `
   .custom-scroll {
     scrollbar-gutter: stable;
@@ -16,7 +15,6 @@ const scrollStyles = `
     border-radius: 20px; 
   }
 `;
-
 
 const Modal = ({ type, onClose }: { type: 'terms' | 'privacy'; onClose: () => void }) => {
   const data = TERMS_TC?.[type];
@@ -116,8 +114,10 @@ const Landing: React.FC = () => {
   }, [modalContent]);
 
   return (
-    <div className="h-screen w-full flex flex-col font-mono bg-background text-foreground overflow-hidden selection:bg-[#ef7d55] selection:text-white tracking-tight">
-      
+    // CHANGE 1: Use h-[100dvh] for mobile browsers to avoid address bar clipping
+    <div className="h-[100dvh] w-full flex flex-col font-mono bg-background text-foreground overflow-hidden selection:bg-[#ef7d55] selection:text-white tracking-tight">
+      <style>{scrollStyles}</style>
+
       {modalContent && (
         <Modal 
           type={modalContent} 
@@ -125,74 +125,86 @@ const Landing: React.FC = () => {
         />
       )}
       
-      <main className="max-w-4xl mx-auto px-6 sm:px-10 flex-grow flex flex-col justify-start pt-20 md:pt-24 gap-8 w-full">
-        <header className="w-full">
-          <div className="mb-3"> 
-            <h2 className="font-display text-[15px] md:text-[15.5px] font-semibold tracking-tight text-[#ef7d55]">[ appliedCL ]</h2>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display min-h-[2.1em] md:min-h-[1.05em]">
-            <span>Brain Mirroring for </span>
-            <span className="text-[#ef7d55]">
-              {currentText}
-              <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>
-            </span>
-          </h1>
-          <div className="flex items-baseline gap-2 font-mono text-[11px] text-muted-foreground tracking-tight">
-            <span>Last Updated</span>
-            <ArrowRight className="w-3 h-3 text-muted-foreground/40 translate-y-[1px]" />
-            <span>{currentDate}</span>
-          </div>
-        </header>
-
-        <section className="w-full">
-          <hr className="border-border mb-6 w-full opacity-50" />
-          <article className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 leading-relaxed text-[15px] md:text-[15.5px] text-black">
-            <p>We are rethinking the architecture of artificial intelligence by looking backward at the biological substrate. The current trajectory of ML scaling relies on brute-force compute; we believe the next leap requires a more elegant symmetry between neural topology and algorithmic execution.</p>
-            <p>Developing high-fidelity AI by mirroring biological neural topology and efficiency—a counter-narrative to the status quo of datacenter-first development.</p>
-          </article>
-        </section>
-
-        <section className="w-full">
-          <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
-          <div className="flex flex-wrap items-center gap-y-4 gap-x-3">
-            {researchTopics.map((topic, index) => (
-              <React.Fragment key={index}>
-                <span className="px-2 py-1 border border-border text-[11px] md:text-[12px] text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default">{topic}</span>
-                {index < researchTopics.length - 1 && <ArrowRight className="w-3 h-3 text-muted-foreground/40" />}
-              </React.Fragment>
-            ))}
-          </div>
-        </section>
-
-        <footer className="w-full pt-4 pb-10">
-          <div className="space-y-6">
-            <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">Technical documentation will be released as we emerge from stealth.</p>
-            <div className="flex flex-row flex-wrap items-baseline gap-x-8 gap-y-4 pt-1">
-
-
-              <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
-                <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors">hello@appliedCL.com</span>
-                <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
-              </a>
-
-
-              <a href="https://github.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
-                <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">GitHub</span>
-              </a>
-              <a href="https://x.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
-                <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">X</span>
-              </a>
-
-
-              <button onClick={() => setModalContent('terms')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
-                <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Terms</span>
-              </button>
-              <button onClick={() => setModalContent('privacy')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
-                <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Privacy</span>
-              </button>
+      {/* CHANGE 2: 
+        - overflow-y-auto: Allows scrolling on Mobile (default)
+        - md:overflow-hidden: Disables scrolling on Desktop (md breakpoint and up)
+        - custom-scroll: Keeps your styled scrollbar for mobile
+      */}
+      <main className="flex-grow w-full overflow-y-auto md:overflow-hidden custom-scroll">
+        
+        {/* CHANGE 3: 
+          - py-10: Default vertical padding
+          - md:py-24: Desktop vertical padding
+          - pb-24: Extra padding at bottom for mobile to ensure tags clear the bezel
+        */}
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
+          
+          <header className="w-full">
+            <div className="mb-3"> 
+              <h2 className="font-display text-[15px] md:text-[15.5px] font-semibold tracking-tight text-[#ef7d55]">[ appliedCL ]</h2>
             </div>
-          </div>
-        </footer>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display min-h-[2.1em] md:min-h-[1.05em]">
+              <span>Brain Mirroring for </span>
+              <span className="text-[#ef7d55]">
+                {currentText}
+                <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>
+              </span>
+            </h1>
+            <div className="flex items-baseline gap-2 font-mono text-[11px] text-muted-foreground tracking-tight">
+              <span>Last Updated</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground/40 translate-y-[1px]" />
+              <span>{currentDate}</span>
+            </div>
+          </header>
+
+          <section className="w-full">
+            <hr className="border-border mb-6 w-full opacity-50" />
+            <article className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 leading-relaxed text-[15px] md:text-[15.5px] text-black">
+              <p>We are rethinking the architecture of artificial intelligence by looking backward at the biological substrate. The current trajectory of ML scaling relies on brute-force compute; we believe the next leap requires a more elegant symmetry between neural topology and algorithmic execution.</p>
+              <p>Our collective comprises core contributors to foundational open-source primitives. We are committed to the scientific commons, publishing reproducible research that systematically dismantles the barriers between theoretical science and production-grade inference.</p>
+            </article>
+          </section>
+
+          <section className="w-full">
+            <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
+            <div className="flex flex-wrap items-center gap-y-4 gap-x-3">
+              {researchTopics.map((topic, index) => (
+                <React.Fragment key={index}>
+                  <span className="px-2 py-1 border border-border text-[11px] md:text-[12px] text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default">{topic}</span>
+                  {index < researchTopics.length - 1 && <ArrowRight className="w-3 h-3 text-muted-foreground/40" />}
+                </React.Fragment>
+              ))}
+            </div>
+          </section>
+
+          <footer className="w-full pt-4 mt-auto">
+            <div className="space-y-6">
+              <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">Technical documentation will be released as we emerge from stealth.</p>
+              <div className="flex flex-row flex-wrap items-baseline gap-x-8 gap-y-4 pt-1">
+
+                <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors">hello@appliedCL.com</span>
+                  <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
+                </a>
+
+                <a href="https://github.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">GitHub</span>
+                </a>
+                <a href="https://x.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">X</span>
+                </a>
+
+                <button onClick={() => setModalContent('terms')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Terms</span>
+                </button>
+                <button onClick={() => setModalContent('privacy')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Privacy</span>
+                </button>
+              </div>
+            </div>
+          </footer>
+
+        </div>
       </main>
     </div>
   );

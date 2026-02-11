@@ -114,7 +114,6 @@ const Landing: React.FC = () => {
   }, [modalContent]);
 
   return (
-    // CHANGE 1: Use h-[100dvh] for mobile browsers to avoid address bar clipping
     <div className="h-[100dvh] w-full flex flex-col font-mono bg-background text-foreground overflow-hidden selection:bg-[#ef7d55] selection:text-white tracking-tight">
       <style>{scrollStyles}</style>
 
@@ -125,18 +124,7 @@ const Landing: React.FC = () => {
         />
       )}
       
-      {/* CHANGE 2: 
-        - overflow-y-auto: Allows scrolling on Mobile (default)
-        - md:overflow-hidden: Disables scrolling on Desktop (md breakpoint and up)
-        - custom-scroll: Keeps your styled scrollbar for mobile
-      */}
       <main className="flex-grow w-full overflow-y-auto md:overflow-hidden custom-scroll">
-        
-        {/* CHANGE 3: 
-          - py-10: Default vertical padding
-          - md:py-24: Desktop vertical padding
-          - pb-24: Extra padding at bottom for mobile to ensure tags clear the bezel
-        */}
         <div className="max-w-4xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
           
           <header className="w-full">
@@ -167,11 +155,16 @@ const Landing: React.FC = () => {
 
           <section className="w-full">
             <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
-            <div className="flex flex-wrap items-center gap-y-4 gap-x-3">
+            {/* UPDATED: gap-2 on mobile, arrows hidden on mobile, whitespace-nowrap on tags */}
+            <div className="flex flex-wrap items-center gap-2 md:gap-x-3 md:gap-y-4">
               {researchTopics.map((topic, index) => (
                 <React.Fragment key={index}>
-                  <span className="px-2 py-1 border border-border text-[11px] md:text-[12px] text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default">{topic}</span>
-                  {index < researchTopics.length - 1 && <ArrowRight className="w-3 h-3 text-muted-foreground/40" />}
+                  <span className="px-2 py-1 border border-border text-[11px] md:text-[12px] text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-nowrap">
+                    {topic}
+                  </span>
+                  {index < researchTopics.length - 1 && (
+                    <ArrowRight className="hidden md:block w-3 h-3 text-muted-foreground/40" />
+                  )}
                 </React.Fragment>
               ))}
             </div>

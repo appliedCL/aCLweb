@@ -155,13 +155,20 @@ const Landing: React.FC = () => {
 
           <section className="w-full">
             <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
-            {/* UPDATED: gap-2 on mobile, arrows hidden on mobile, whitespace-nowrap on tags */}
+            
+            {/* FIXED TAG LAYOUT:
+              1. justify-start (default) vs justify-items-start
+              2. text-[10px] on mobile allows more items per row
+              3. whitespace-normal on mobile ensures long words wrap if absolutely necessary, 
+                 while whitespace-nowrap on md keeps desktop clean.
+            */}
             <div className="flex flex-wrap items-center gap-2 md:gap-x-3 md:gap-y-4">
               {researchTopics.map((topic, index) => (
                 <React.Fragment key={index}>
-                  <span className="px-2 py-1 border border-border text-[11px] md:text-[12px] text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-nowrap">
+                  <span className="px-2 py-1 border border-border text-[10px] md:text-[12px] leading-tight text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-normal md:whitespace-nowrap text-center md:text-left">
                     {topic}
                   </span>
+                  {/* Arrow only visible on desktop */}
                   {index < researchTopics.length - 1 && (
                     <ArrowRight className="hidden md:block w-3 h-3 text-muted-foreground/40" />
                   )}

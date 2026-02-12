@@ -73,7 +73,7 @@ const Modal = ({ type, onClose }: { type: 'terms' | 'privacy'; onClose: () => vo
 };
 
 const Landing: React.FC = () => {
-  const currentDate = "February 1, 2026";
+  const currentDate = "February 12, 2026";
   const [modalContent, setModalContent] = useState<'terms' | 'privacy' | null>(null); 
 
   const words = ["Machine Learning.", "Neural Topology.", "Biological Fidelity.", "Causal Inference."];

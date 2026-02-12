@@ -78,7 +78,7 @@ const Landing: React.FC = () => {
 
   const words = ["Machine Learning.", "Neural Topology.", "Biological Fidelity.", "Causal Inference."];
   const researchTopics = [
-    "Causal Structure Discovery", "Variational Free Energy", "Synaptic Plasticity Modeling",
+    "Causal Structure Discovery", "Variational Free Energy", "Synaptic Plasticity Modelling",
     "Manifold Learning", "Neuromorphic Gating", "Active Inference",
     "Topological Data Analysis", "Sparse Coding", "Statistical Learning"
   ];
@@ -155,20 +155,12 @@ const Landing: React.FC = () => {
 
           <section className="w-full">
             <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
-            
-            {/* FIXED TAG LAYOUT:
-              1. justify-start (default) vs justify-items-start
-              2. text-[10px] on mobile allows more items per row
-              3. whitespace-normal on mobile ensures long words wrap if absolutely necessary, 
-                 while whitespace-nowrap on md keeps desktop clean.
-            */}
             <div className="flex flex-wrap items-center gap-2 md:gap-x-3 md:gap-y-4">
               {researchTopics.map((topic, index) => (
                 <React.Fragment key={index}>
                   <span className="px-2 py-1 border border-border text-[10px] md:text-[12px] leading-tight text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-normal md:whitespace-nowrap text-center md:text-left">
                     {topic}
                   </span>
-                  {/* Arrow only visible on desktop */}
                   {index < researchTopics.length - 1 && (
                     <ArrowRight className="hidden md:block w-3 h-3 text-muted-foreground/40" />
                   )}
@@ -180,10 +172,11 @@ const Landing: React.FC = () => {
           <footer className="w-full pt-4 mt-auto">
             <div className="space-y-6">
               <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">Technical documentation will be released as we emerge from stealth.</p>
-              <div className="flex flex-row flex-wrap items-baseline gap-x-8 gap-y-4 pt-1">
+              <div className="flex flex-row flex-wrap items-baseline gap-x-12 gap-y-4 pt-1">
 
                 <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors">hello@appliedCL.com</span>
+                  {/* Changed tracking-wide to tracking-wider */}
+                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors tracking-wider">hello@appliedCL.com</span>
                   <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
                 </a>
 

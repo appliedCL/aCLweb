@@ -171,11 +171,14 @@ const Landing: React.FC = () => {
 
           <footer className="w-full pt-4 mt-auto">
             <div className="space-y-6">
-              <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">Technical documentation will be released as we emerge from stealth.</p>
-              <div className="flex flex-row flex-wrap items-baseline gap-x-12 gap-y-4 pt-1">
+              <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">
+                Technical documentation will be released as we emerge from stealth.
+              </p>
+              
+              {/* Changed gap-x-12 to gap-x-6 */}
+              <div className="flex flex-row flex-wrap items-baseline gap-x-6 gap-y-4 pt-1"> 
 
                 <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
-                  {/* Changed tracking-wide to tracking-wider */}
                   <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors tracking-wider">hello@appliedCL.com</span>
                   <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
                 </a>

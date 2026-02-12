@@ -153,52 +153,54 @@ const Landing: React.FC = () => {
             </article>
           </section>
 
-          <section className="w-full">
-            <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
-            <div className="flex flex-wrap items-center gap-2 md:gap-x-3 md:gap-y-4">
-              {researchTopics.map((topic, index) => (
-                <React.Fragment key={index}>
-                  <span className="px-2 py-1 border border-border text-[10px] md:text-[12px] leading-tight text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-normal md:whitespace-nowrap text-center md:text-left">
-                    {topic}
-                  </span>
-                  {index < researchTopics.length - 1 && (
-                    <ArrowRight className="hidden md:block w-3 h-3 text-muted-foreground/40" />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </section>
-
-          <footer className="w-full pt-4 mt-auto">
-            <div className="space-y-6">
-              <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">
-                Technical documentation will be released as we emerge from stealth.
-              </p>
-              
-              {/* Changed gap-x-12 to gap-x-6 */}
-              <div className="flex flex-row flex-wrap items-baseline gap-x-6 gap-y-4 pt-1"> 
-
-                <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors tracking-wider">hello@appliedCL.com</span>
-                  <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
-                </a>
-
-                <a href="https://github.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">GitHub</span>
-                </a>
-                <a href="https://x.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">X</span>
-                </a>
-
-                <button onClick={() => setModalContent('terms')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Terms</span>
-                </button>
-                <button onClick={() => setModalContent('privacy')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
-                  <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Privacy</span>
-                </button>
+          {/* Grouped section with adjusted gap for "a little space" */}
+          <div className="flex flex-col gap-12 pt-4">
+            <section className="w-full">
+              <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
+              <div className="flex flex-wrap items-center gap-2 md:gap-x-3 md:gap-y-4">
+                {researchTopics.map((topic, index) => (
+                  <React.Fragment key={index}>
+                    <span className="px-2 py-1 border border-border text-[10px] md:text-[12px] leading-tight text-black hover:bg-[#ef7d55] hover:text-white transition-colors cursor-default whitespace-normal md:whitespace-nowrap text-center md:text-left">
+                      {topic}
+                    </span>
+                    {index < researchTopics.length - 1 && (
+                      <ArrowRight className="hidden md:block w-3 h-3 text-muted-foreground/40" />
+                    )}
+                  </React.Fragment>
+                ))}
               </div>
-            </div>
-          </footer>
+            </section>
+
+            {/* Increased padding-top for breathing room */}
+            <footer className="w-full pt-8">
+              <div className="space-y-6">
+                <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">
+                  Technical documentation will be released as we emerge from stealth.
+                </p>
+                
+                <div className="flex flex-row flex-wrap items-baseline gap-x-6 gap-y-4 pt-1"> 
+                  <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
+                    <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors tracking-wider">hello@appliedCL.com</span>
+                    <ArrowUpRight className="w-2.5 h-2.5 translate-y-[1px] text-black group-hover:text-[#ef7d55] transition-all" />
+                  </a>
+
+                  <a href="https://github.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
+                    <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">GitHub</span>
+                  </a>
+                  <a href="https://x.com/appliedCL" target="_blank" rel="noopener noreferrer" className="group">
+                    <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">X</span>
+                  </a>
+
+                  <button onClick={() => setModalContent('terms')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
+                    <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Terms</span>
+                  </button>
+                  <button onClick={() => setModalContent('privacy')} className="group outline-none bg-transparent border-none p-0 cursor-pointer">
+                    <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 transition-colors">Privacy</span>
+                  </button>
+                </div>
+              </div>
+            </footer>
+          </div>
 
         </div>
       </main>

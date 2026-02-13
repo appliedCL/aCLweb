@@ -128,9 +128,23 @@ const Landing: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
           
           <header className="w-full">
-            <div className="mb-3"> 
-              <h2 className="font-display text-[15px] md:text-[15.5px] font-semibold tracking-tight text-[#ef7d55]">[ appliedCL ]</h2>
+            {/* --- UPDATED HEADER WITH LOCAL IMAGE --- */}
+            <div className="mb-3 flex items-center gap-3"> 
+              {/* Since the file is in 'public/favicon.ico', we reference it as '/favicon.ico'.
+                  h-[1.4em] keeps the image sized relative to the text font size.
+              */}
+              <img 
+                src="/favicon.ico" 
+                alt="appliedCL Logo" 
+                className="h-[1.4em] w-auto object-contain"
+              />
+              
+              <h2 className="font-display text-[15px] md:text-[15.5px] font-semibold tracking-tight text-[#ef7d55]">
+                [ appliedCL ]
+              </h2>
             </div>
+            {/* --------------------------------------- */}
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display min-h-[2.1em] md:min-h-[1.05em]">
               <span>Brain Mirroring for </span>
               <span className="text-[#ef7d55]">
@@ -153,7 +167,6 @@ const Landing: React.FC = () => {
             </article>
           </section>
 
-          {/* Grouped section with adjusted gap for "a little space" */}
           <div className="flex flex-col gap-12 pt-4">
             <section className="w-full">
               <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Focus Areas</h3>
@@ -171,7 +184,6 @@ const Landing: React.FC = () => {
               </div>
             </section>
 
-            {/* Increased padding-top for breathing room */}
             <footer className="w-full pt-8">
               <div className="space-y-6">
                 <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">

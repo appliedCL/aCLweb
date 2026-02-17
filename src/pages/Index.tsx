@@ -76,7 +76,12 @@ const Landing: React.FC = () => {
   const currentDate = "February 12, 2026";
   const [modalContent, setModalContent] = useState<'terms' | 'privacy' | null>(null); 
 
-  const words = ["Machine Learning.", "Neural Topology.", "Biological Fidelity.", "Causal Inference."];
+  const words = ["Active Inference.",
+                "Causal Cognition.",
+                "Generative World Models.",
+                "Predictive Processing.",
+                "Free Energy Principle.",
+                "Counterfactual Simulation."];
   const researchTopics = [
     "Causal Structure Discovery", "Variational Free Energy", "Synaptic Plasticity Modelling",
     "Manifold Learning", "Neuromorphic Gating", "Active Inference",

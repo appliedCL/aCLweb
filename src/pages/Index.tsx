@@ -82,7 +82,6 @@ const Landing: React.FC = () => {
                 "Predictive Processing.",
                 "Free Energy Principle.",
                 "Counterfactual Simulation."];
-                
   const researchTopics = [
     "Causal Structure Discovery", "Variational Free Energy", "Synaptic Plasticity Modelling",
     "Manifold Learning", "Neuromorphic Gating", "Active Inference",
@@ -131,7 +130,8 @@ const Landing: React.FC = () => {
       )}
       
       <main className="flex-grow w-full overflow-y-auto md:overflow-hidden custom-scroll">
-        <div className="max-w-4xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
+        {/* Changed from max-w-4xl to max-w-6xl for a wider layout */}
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
           
           <header className="w-full">
             <div className="mb-3 flex items-center gap-3"> 
@@ -146,35 +146,22 @@ const Landing: React.FC = () => {
               </h2>
             </div>
 
-            <div className="grid mb-2">
-              <h1 className="col-start-1 row-start-1 invisible pointer-events-none text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] font-display" aria-hidden="true">
-                <span>Brain Mirroring for </span>
-                <span>
-                  Counterfactual Simulation.
-                  <span className="inline-block w-[2px] h-[0.8em] ml-1"></span>
-                </span>
-              </h1>
-              
-              <h1 className="col-start-1 row-start-1 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] text-black font-display">
-                <span>Brain Mirroring for </span>
-                <span className="text-[#ef7d55]">
-                  {currentText}
-                  <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>
-                </span>
-              </h1>
-            </div>
-          </header>
-
-          <section className="w-full">
-            {/* Moved "Last Updated" here, right above the hr */}
-            <div className="flex items-baseline gap-2 font-mono text-[11px] text-muted-foreground tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display">
+              <span>Brain Mirroring for </span>
+              <span className="text-[#ef7d55]">
+                {currentText}
+                <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>
+              </span>
+            </h1>
+            <div className="flex items-baseline gap-2 font-mono text-[11px] text-muted-foreground tracking-tight">
               <span>Last Updated</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground/40 translate-y-[1px]" />
               <span>{currentDate}</span>
             </div>
-            
+          </header>
+
+          <section className="w-full">
             <hr className="border-border mb-6 w-full opacity-50" />
-            
             <article className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 leading-relaxed text-[15px] md:text-[15.5px] text-black">
               <p>We are rethinking the architecture of artificial intelligence by looking backward at the biological substrate. The current trajectory of ML scaling relies on brute-force compute; we believe the next leap requires a more elegant symmetry between neural topology and algorithmic execution.</p>
               <p>Our collective comprises core contributors to foundational open-source primitives. We are committed to the scientific commons, publishing reproducible research that systematically dismantles the barriers between theoretical science and production-grade inference.</p>

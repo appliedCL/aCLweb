@@ -130,8 +130,8 @@ const Landing: React.FC = () => {
       )}
       
       <main className="flex-grow w-full overflow-y-auto md:overflow-hidden custom-scroll">
-        {/* Changed from max-w-4xl to max-w-6xl for a wider layout */}
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
+        {/* Custom arbitrary width exactly halfway between 5xl and 6xl */}
+        <div className="max-w-[68rem] mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
           
           <header className="w-full">
             <div className="mb-3 flex items-center gap-3"> 

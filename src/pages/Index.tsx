@@ -130,7 +130,6 @@ const Landing: React.FC = () => {
       )}
       
       <main className="flex-grow w-full overflow-y-auto md:overflow-hidden custom-scroll">
-        {/* Custom arbitrary width exactly halfway between 5xl and 6xl */}
         <div className="max-w-[68rem] mx-auto px-6 sm:px-10 pt-20 pb-24 md:py-24 min-h-full flex flex-col justify-start gap-8">
           
           <header className="w-full">
@@ -146,8 +145,8 @@ const Landing: React.FC = () => {
               </h2>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display">
-              <span>Brain Mirroring for </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display -ml-[2px] md:-ml-1">
+              <span>{"Brain Mirroring for "}</span>
               <span className="text-[#ef7d55]">
                 {currentText}
                 <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>

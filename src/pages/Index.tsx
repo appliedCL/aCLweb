@@ -141,7 +141,7 @@ const Landing: React.FC = () => {
               />
               
               <h2 className="font-display text-[15px] md:text-[15.5px] font-semibold tracking-tight text-[#ef7d55]">
-                [ appliedCL ]
+                appliedCL
               </h2>
             </div>
 

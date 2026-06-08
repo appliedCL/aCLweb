@@ -78,7 +78,7 @@ const Landing: React.FC = () => {
 
   const words = ["Active Inference.",
                 "Causal Cognition.",
-                "Generative World Models.",
+                "Simulation.",
                 "Predictive Processing.",
                 "Free Energy Principle.",
                 "Counterfactual Simulation."];
@@ -186,10 +186,6 @@ const Landing: React.FC = () => {
 
             <footer className="w-full pt-8">
               <div className="space-y-6">
-                <p className="italic text-muted-foreground font-mono text-[10px] tracking-tight">
-                  Technical documentation will be released as we emerge from stealth.
-                </p>
-                
                 <div className="flex flex-row flex-wrap items-baseline gap-x-6 gap-y-4 pt-1"> 
                   <a href="mailto:hello@appliedCL.com" className="group inline-flex items-baseline gap-1">
                     <span className="font-mono text-[10px] uppercase border-b border-foreground/20 group-hover:border-[#ef7d55] group-hover:text-[#ef7d55] pb-0.5 leading-none transition-colors tracking-wider">hello@appliedCL.com</span>

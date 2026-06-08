@@ -146,7 +146,7 @@ const Landing: React.FC = () => {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-[1.05] text-black font-display -ml-[2px] md:-ml-1">
-              <span>{"Brain Mirroring for "}</span>
+              <span>{"Biological Mirroring for "}</span>
               <span className="text-[#ef7d55]">
                 {currentText}
                 <span className="inline-block w-[2px] h-[0.8em] bg-[#ef7d55] ml-1 align-middle animate-[pulse_1s_infinite]"></span>

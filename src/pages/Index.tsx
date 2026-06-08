@@ -73,7 +73,7 @@ const Modal = ({ type, onClose }: { type: 'terms' | 'privacy'; onClose: () => vo
 };
 
 const Landing: React.FC = () => {
-  const currentDate = "February 12, 2026";
+  const currentDate = "8th June, 2026";
   const [modalContent, setModalContent] = useState<'terms' | 'privacy' | null>(null); 
 
   const words = ["Active Inference.",
